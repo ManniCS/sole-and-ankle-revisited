@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { BREAKPOINTS, COLORS, WEIGHTS, QUERIES } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 
+import Icon from '../Icon'
+
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
-  // For our mobile hamburger menu, we'll want to use a button
-  // with an onClick handler, something like this:
-  //
-  // <button onClick={() => setShowMobileMenu(true)}>
 
   return (
     <header>
@@ -30,8 +27,12 @@ const Header = () => {
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
         <Side />
+        <MobileNav>
+          <NavButton><ButtonIcon id="shopping-bag"/></NavButton>
+          <NavButton><ButtonIcon id="search"/></NavButton>
+          <NavButton onClick={() => setShowMobileMenu(true)}><ButtonIcon id="menu"/></NavButton>
+        </MobileNav>
       </MainHeader>
-
       <MobileMenu
         isOpen={showMobileMenu}
         onDismiss={() => setShowMobileMenu(false)}
@@ -46,12 +47,20 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media (max-width: 1000px) { 
+    border-top: solid 4px ${COLORS.gray[900]};
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
+
+  @media (max-width: 1000px) { 
+    display: none;
+  }
 `;
 
 const Side = styled.div`
@@ -68,6 +77,37 @@ const NavLink = styled.a`
   &:first-of-type {
     color: ${COLORS.secondary};
   }
-`;
+  `;
+
+const ButtonIcon = styled(Icon)`
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+`
+
+const NavButton = styled.button`
+  height: ${24 / 16}rem;
+  width: ${24 / 16}rem;
+  background: none;
+  border: none;
+`
+
+const MobileNav = styled.div`
+  display: none;
+
+  @media (max-width: 1000px) { 
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    width: clamp(
+      100px,
+      20vw,
+      140px
+    )
+  }
+`
 
 export default Header;

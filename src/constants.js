@@ -16,3 +16,17 @@ export const WEIGHTS = {
   medium: 600,
   bold: 800,
 };
+
+// Values in pixels:
+export const BREAKPOINTS = {
+  mobileMax: 550,
+  tabletMax: 1100,
+  laptopMax: 1500,
+}
+
+// Converted to rems
+export const QUERIES = {
+  'mobileAndDown': `(max-width: ${BREAKPOINTS.mobileMax / 16}rem)`,
+  'tabletAndDown': `(max-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
+  'laptopAndDown': `(max-width: ${BREAKPOINTS.laptopMax / 16}rem)`,
+}
