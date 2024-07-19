@@ -20,14 +20,14 @@ const Header = () => {
         <LogoWrapper>
           <Logo />
         </LogoWrapper>
-        <Nav>
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-        </Nav>
+        </DesktopNav>
         <Filler />
         <MobileActions>
           <ShoppingButton>
@@ -59,7 +59,7 @@ const MainHeader = styled.div`
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 
-  @media (max-width: 1000px) { 
+  @media (${QUERIES.tabletAndSmaller}) { 
     border-top: solid 4px ${COLORS.gray[900]};
     align-items: center;
   }
@@ -70,12 +70,12 @@ const MainHeader = styled.div`
   }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
 
-  @media (max-width: 1000px) { 
+  @media (${QUERIES.tabletAndSmaller}) { 
     display: none;
   }
 `;
@@ -83,7 +83,7 @@ const Nav = styled.nav`
 const LogoWrapper = styled.div`
   flex: 1;
 
-  @media (max-width: 1000px) { 
+  @media (${QUERIES.tabletAndSmaller}) { 
     flex: revert;
   }
 `;
@@ -121,12 +121,12 @@ const ButtonIcon = styled(Icon)`
 const MobileActions = styled.div`
   display: none;
 
-  @media (max-width: 1000px) { 
+  @media (${QUERIES.tabletAndSmaller}) { 
     display: flex;
     gap: 32px;
   }
 
-  @media (max-width: 500px) { 
+  @media (${QUERIES.mobileAndSmaller}) { 
     gap: 16px;
   }
 
