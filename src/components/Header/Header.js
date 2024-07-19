@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { BREAKPOINTS, COLORS, WEIGHTS, QUERIES } from '../../constants';
+import { COLORS, WEIGHTS, QUERIES } from '../../constants';
 import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
+import UnstyledButton from '../UnstyledButton'
 
 import Icon from '../Icon'
+import VisuallyHidden from '../VisuallyHidden';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -15,9 +17,9 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
+        </LogoWrapper>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -26,12 +28,21 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Side />
-        <MobileNav>
-          <NavButton><ButtonIcon id="shopping-bag"/></NavButton>
-          <NavButton><ButtonIcon id="search"/></NavButton>
-          <NavButton onClick={() => setShowMobileMenu(true)}><ButtonIcon id="menu"/></NavButton>
-        </MobileNav>
+        <Filler />
+        <MobileActions>
+          <ShoppingButton>
+            <ButtonIcon id="shopping-bag" size={24}/>
+            <VisuallyHidden>Open cart</VisuallyHidden>
+          </ShoppingButton>
+          <UnstyledButton>
+            <ButtonIcon id="search" size={24}/>
+            <VisuallyHidden>Search</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
+            <ButtonIcon id="menu" size={24}/>
+            <VisuallyHidden>Menu</VisuallyHidden>
+          </UnstyledButton>
+        </MobileActions>
       </MainHeader>
       <MobileMenu
         isOpen={showMobileMenu}
@@ -50,6 +61,12 @@ const MainHeader = styled.div`
 
   @media (max-width: 1000px) { 
     border-top: solid 4px ${COLORS.gray[900]};
+    align-items: center;
+  }
+
+  @media (max-width: 500px) { 
+    padding-left: 16px;
+    padding-right: 16px;
   }
 `;
 
@@ -63,7 +80,16 @@ const Nav = styled.nav`
   }
 `;
 
-const Side = styled.div`
+const LogoWrapper = styled.div`
+  flex: 1;
+
+  @media (max-width: 1000px) { 
+    flex: revert;
+  }
+`;
+
+
+const Filler = styled.div`
   flex: 1;
 `;
 
@@ -79,6 +105,10 @@ const NavLink = styled.a`
   }
   `;
 
+const ShoppingButton = styled(UnstyledButton)`
+  transform: translateX(-2px);
+`
+
 const ButtonIcon = styled(Icon)`
   display: flex;
   flex-direction: column;
@@ -88,26 +118,18 @@ const ButtonIcon = styled(Icon)`
   width: 100%;
 `
 
-const NavButton = styled.button`
-  height: ${24 / 16}rem;
-  width: ${24 / 16}rem;
-  background: none;
-  border: none;
-`
-
-const MobileNav = styled.div`
+const MobileActions = styled.div`
   display: none;
 
   @media (max-width: 1000px) { 
     display: flex;
-    height: 100%;
-    justify-content: space-between;
-    width: clamp(
-      100px,
-      20vw,
-      140px
-    )
+    gap: 32px;
   }
+
+  @media (max-width: 500px) { 
+    gap: 16px;
+  }
+
 `
 
 export default Header;
