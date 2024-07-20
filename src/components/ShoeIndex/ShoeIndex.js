@@ -26,12 +26,12 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
-          <MobileWrapper>
+          <div>
+            <MobileWrapper>
+              <ShoeBreadcrumbs />
+            </MobileWrapper>
             <Title>Running</Title>
-            <MobileCrumbWrapper>
-                <ShoeBreadcrumbs />
-            </MobileCrumbWrapper>
-          </MobileWrapper>
+          </div>
           <FilterWrapper>
             <Select
               label="Sort"
@@ -70,17 +70,12 @@ const LeftColumn = styled.div`
   }
 `;
 
-const MobileCrumbWrapper = styled.div`
+const MobileWrapper = styled.div`
   display: none;
 
   @media (${QUERIES.tabletAndSmaller}) { 
     display: revert;
   }
-`
-
-const MobileWrapper = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
 `
 
 const FilterWrapper = styled.div`

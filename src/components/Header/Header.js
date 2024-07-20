@@ -9,6 +9,7 @@ import UnstyledButton from '../UnstyledButton'
 
 import Icon from '../Icon'
 import VisuallyHidden from '../VisuallyHidden';
+import NavLink from '../NavLink';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -64,7 +65,7 @@ const MainHeader = styled.div`
     align-items: center;
   }
 
-  @media (max-width: 500px) { 
+  @media (${QUERIES.mobileAndSmaller}) { 
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -92,18 +93,6 @@ const LogoWrapper = styled.div`
 const Filler = styled.div`
   flex: 1;
 `;
-
-const NavLink = styled.a`
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: ${COLORS.gray[900]};
-  font-weight: ${WEIGHTS.medium};
-
-  &:first-of-type {
-    color: ${COLORS.secondary};
-  }
-  `;
 
 const ShoppingButton = styled(UnstyledButton)`
   transform: translateX(-2px);
