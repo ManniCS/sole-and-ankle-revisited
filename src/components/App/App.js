@@ -22,6 +22,9 @@ const App = () => {
       --color-primary: hsl(340deg 65% 47%);
       --color-secondary: hsl(240deg 60% 63%);
 
+      /* ALPHAS */
+      --color-gray-alpha-80: hsl(220deg 5% 40% / 0.8);
+
       /* WEIGHTS */
       --weight-normal: 500;
       --weight-medium: 600;
