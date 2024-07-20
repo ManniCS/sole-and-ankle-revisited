@@ -9,6 +9,8 @@ const NavLink = styled.a`
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
 
+  min-width: max-content;
+
   &:first-of-type {
     color: ${COLORS.secondary};
   }
