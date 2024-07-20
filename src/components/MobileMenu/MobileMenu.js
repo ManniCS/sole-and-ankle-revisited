@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
-import {COLORS, WEIGHTS} from '../../constants'
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -54,7 +53,7 @@ const Overlay = styled(DialogOverlay)`
 
 const Content = styled(DialogContent)`
   width: 300px;
-  background: ${COLORS.white};
+  background: var(--color-white);
   position: absolute;
   right: 0;
   top: 0;
@@ -92,9 +91,9 @@ const Footer = styled.footer`
 
 const FooterLink = styled.a`
   text-decoration: none;
-  color: ${COLORS.gray[700]};
+  color: var(--color-gray-700);
   font-size: ${14 / 16}rem;
-  font-weight: ${WEIGHTS.normal}
+  font-weight: var(--weight-normal)
 `
 
 const CloseButton = styled(UnstyledButton)`
